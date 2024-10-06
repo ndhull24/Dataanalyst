@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Advanced business website with modern UI/UX, responsive design, and dynamic elements.">
-    <meta name="keywords" content="business, technology, services, web development">
-    <meta name="author" content="Navdeep Dhull">
-    <title>Advanced Business Website</title>
-    <!-- Link to Google Fonts and Font Awesome for icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced Website</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Advanced website template with modern design, responsiveness, and interactive features.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, advanced website, responsive, modern design">
+
     <style>
-        /* General Styles */
+        /* Base Reset */
         * {
             margin: 0;
             padding: 0;
@@ -19,284 +25,312 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
             color: #333;
-            background-color: #f4f4f4;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* Navigation */
+        /* Dark Mode */
+        body.dark-mode {
+            background-color: #222;
+            color: #f4f4f4;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #333;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .navbar .logo {
-            color: #fff;
-            font-size: 1.5rem;
-        }
-
-        .navbar .nav-links {
+        .nav-links {
             list-style: none;
         }
 
-        .navbar .nav-links li {
+        .nav-links li {
             display: inline-block;
             margin-left: 20px;
         }
 
-        .navbar .nav-links a {
+        .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .hamburger {
             display: none;
+            cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hamburger {
-                display: block;
-                color: #fff;
-            }
-        }
-
-        /* Hero Section */
         .hero {
             height: 100vh;
-            background: url('hero-image.jpg') no-repeat center center/cover;
+            background: url('https://source.unsplash.com/random/1600x900?tech') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
             text-align: center;
         }
 
         .hero-content {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
+            padding: 10px 20px;
             background-color: #f05656;
             color: #fff;
-            text-decoration: none;
+            border: none;
             border-radius: 5px;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #d44e4e;
-        }
-
-        /* About Section */
-        .about {
-            padding: 4rem 2rem;
+        .about, .portfolio, .contact {
+            padding: 50px 20px;
             text-align: center;
         }
 
-        /* Services Section */
-        .services {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 1.5rem;
-            margin: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .slideshow {
-            display: flex;
-            overflow: hidden;
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
         }
 
         .slide {
+            display: none;
+            position: relative;
+        }
+
+        .slide img {
             width: 100%;
-            transition: transform 0.5s ease-in-out;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .contact form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact input, .contact select, .contact textarea {
-            margin-bottom: 1rem;
-            padding: 0.7rem;
+        .text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
         }
 
-        /* Footer */
-        .footer {
+        .slideshow-dots {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #717171;
+        }
+
+        footer {
             background: #333;
             color: #fff;
-            padding: 2rem;
             text-align: center;
+            padding: 20px;
         }
 
-        .social-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-        }
-
-        .social-links li {
-            margin-left: 10px;
-        }
-
-        .social-links a {
+        .social-icons a {
             color: #fff;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 1.8rem;
+                color: #fff;
+            }
         }
     </style>
+
+    <script>
+      // Dark Mode Toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+      }
+
+      // Persist dark mode based on user preference
+      window.onload = function() {
+        if (localStorage.getItem("darkMode") === "true") {
+          document.body.classList.add("dark-mode");
+        }
+      };
+    </script>
 </head>
 <body>
-    <!-- Navigation bar with sticky effect -->
+    <!-- Header with Navigation -->
     <header>
         <nav class="navbar">
-            <div class="logo">AdvancedSite</div>
+            <div class="logo">
+                <h1>MyWebsite</h1>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><button id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</button></li>
             </ul>
-            <div class="hamburger">
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" id="hamburger">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
 
-    <!-- Hero section with call-to-action button and parallax scrolling -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Innovative Solutions for Modern Businesses</h1>
-            <p>We help your business scale with technology-driven solutions</p>
-            <a href="#services" class="btn">Explore Services</a>
+            <h1>Welcome to MyWebsite</h1>
+            <p>Building modern, responsive, and interactive experiences.</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
     </section>
 
-    <!-- About section with parallax effect -->
+    <!-- About Section -->
     <section id="about" class="about">
         <h2>About Us</h2>
-        <p>We are a leading technology provider that focuses on delivering high-quality, scalable solutions to businesses of all sizes.</p>
+        <p>We specialize in creating modern websites that are both visually appealing and technically advanced.</p>
     </section>
 
-    <!-- Services section with dynamic elements (testimonials and gallery) -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-card">
-            <h3>Web Development</h3>
-            <p>We build stunning websites that drive engagement and growth.</p>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="https://source.unsplash.com/random/800x600?website" alt="Portfolio 1">
+                <div class="text">Project 1</div>
+            </div>
+            <div class="slide fade">
+                <img src="https://source.unsplash.com/random/800x600?business" alt="Portfolio 2">
+                <div class="text">Project 2</div>
+            </div>
+            <div class="slide fade">
+                <img src="https://source.unsplash.com/random/800x600?design" alt="Portfolio 3">
+                <div class="text">Project 3</div>
+            </div>
         </div>
-        <div class="service-card">
-            <h3>Mobile Apps</h3>
-            <p>Custom apps that bring your business to the fingertips of users.</p>
-        </div>
-        <div class="service-card">
-            <h3>Digital Marketing</h3>
-            <p>Effective strategies that deliver measurable results.</p>
-        </div>
-        <!-- Slideshow/gallery for dynamic content -->
-        <div class="slideshow">
-            <img src="img1.jpg" alt="Service Image 1" class="slide">
-            <img src="img2.jpg" alt="Service Image 2" class="slide">
-            <img src="img3.jpg" alt="Service Image 3" class="slide">
+        <div class="slideshow-dots">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
         </div>
     </section>
 
-    <!-- Contact form with validation -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <form id="contactForm" novalidate>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-            <select name="subject" id="subject" required>
-                <option value="">Select Subject</option>
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Support">Support</option>
-                <option value="Feedback">Feedback</option>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="subject">Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="web-development">Web Development</option>
+                <option value="mobile-apps">Mobile Apps</option>
+                <option value="other">Other</option>
             </select>
-            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Submit</button>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
         </form>
-        <div id="formResponse" class="form-response"></div>
+        <div id="form-response"></div>
     </section>
 
-    <!-- Footer with social media links -->
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 AdvancedSite. All Rights Reserved.</p>
-        <ul class="social-links">
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
+        <p>&copy; 2024 MyWebsite. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
 
-    <!-- JavaScript for interactivity -->
     <script>
-        // Hamburger menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Simple form validation
+        // JavaScript for Form Submission with Custom Response
         const form = document.getElementById('contactForm');
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            let isValid = form.checkValidity();
-            if (isValid) {
-                document.getElementById('formResponse').innerHTML = '<p>Thank you for your message!</p>';
+        const formResponse = document.getElementById('form-response');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && subject && message) {
+                formResponse.innerHTML = `<p>Thank you, ${name}. Your message has been sent successfully!</p>`;
+                formResponse.style.color = 'green';
             } else {
-                document.getElementById('formResponse').innerHTML = '<p>Please fill out all required fields.</p>';
+                formResponse.innerHTML = '<p>Please fill in all fields before submitting.</p>';
+                formResponse.style.color = 'red';
             }
         });
+
+        // Slideshow JavaScript
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            const slides = document.getElementsByClassName('slide');
+            const dots = document.getElementsByClassName('dot');
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(' active', '');
+            }
+
+            slides[slideIndex - 1].style.display = 'block';
+            dots[slideIndex - 1].className += ' active';
+            setTimeout(showSlides, 3000); // Change slide every 3 seconds
+        }
     </script>
 </body>
 </html>
